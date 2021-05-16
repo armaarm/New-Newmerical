@@ -77,6 +77,7 @@ export default function Bisection() {
   const handleSubmit = (e) => {
     if (btnState === 0) {
       e.preventDefault();
+      console.log(e);
       bisection();
     }
   };
@@ -127,7 +128,10 @@ export default function Bisection() {
                 disabled={btnState}
                 type="text"
                 value={equation}
-                onChange={(e) => setEquation(e.target.value)}
+                onChange={(e) => 
+                  {setEquation(e.target.value);
+                  console.log(e)}}
+
               />
             </label>
             <p></p>

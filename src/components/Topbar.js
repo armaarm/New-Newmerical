@@ -59,7 +59,7 @@ const Topbar = () => {
         </DropdownMenu> 
         </Dropdown>
         </Nav>
-        <Navbar.Brand href="http://localhost:5000/api-docs/">Swagge</Navbar.Brand>
+        <Navbar.Brand href="http://localhost:5000/api-docs/">Swagger</Navbar.Brand>
         </Navbar>
         </div>
     );
