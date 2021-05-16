@@ -20,7 +20,6 @@ const header = [
     title: () => {
       return (
         <p>
-          {" "}
           X <sub> 0 </sub>
         </p>
       );
@@ -33,7 +32,6 @@ const header = [
     title: () => {
       return (
         <p>
-          {" "}
           X <sub> 1 </sub>
         </p>
       );
