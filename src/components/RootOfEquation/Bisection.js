@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
-import { Table } from "antd";
+import { Table } from "antd"; //สามารถเปลี่ยนแปลงค่าในตารางทุกอย่างได้และคำสั่งง่าย
 import Axios from "axios";
 
 import "../../App.css";
@@ -21,7 +21,7 @@ const header = [
       return (
         <p>
           {" "}
-          X <sub> L </sub>
+          X <sub> L </sub> 
         </p>
       );
     },
@@ -75,17 +75,16 @@ export default function Bisection() {
   }, []);
 
   const handleSubmit = (e) => {
-    if (btnState === 0) {
-      e.preventDefault();
-      console.log(e);
+    if (btnState === 0) { //e = เป็นตัวเก็บค่าstateทุกอย่างในweb
+      e.preventDefault(); //ไม่ให้ทำงานบางอย่างที่เราต้องการในที่นี้คือการrefreshหน้าเพราะhtmlจะรีโหลดทุกครั้งที่กดsubmit ถ้าไม่ป้องกันจะทำให้ค่าที่เราต้องการแสดงหายไป
       bisection();
     }
   };
 
   const bisection = () => {
 
-    Axios.post("http://localhost:5000/api/BisectionAPI", {
-      xl: parseFloat(xl),
+    Axios.post("http://localhost:5000/api/BisectionAPI", {//เรีัยกwebserviceที่เครื่องตัวเอง โดยที่กำหนด port ที่ server.js
+      xl: parseFloat(xl), //parsefloat = เปลี่ยนค่าให้เป็น float
       xr: parseFloat(xr),
       equation: equation,
     })
@@ -93,6 +92,7 @@ export default function Bisection() {
         console.log(res.data.tmpArr);
         newArr = res.data.tmpArr;
         setBtnState(1);
+        console.log(newArr);
       })
       .catch((err) => {
         console.log(err);
@@ -131,7 +131,6 @@ export default function Bisection() {
                 onChange={(e) => 
                   {setEquation(e.target.value);
                   console.log(e)}}
-
               />
             </label>
             <p></p>
@@ -157,11 +156,11 @@ export default function Bisection() {
             <p></p>
 
             {btnState === 0 ? (
-              <button type="submit" disabled={btnState} value="Submit">
+              <button type="submit" >
                 Submit
               </button>
             ) : (
-              <button type="submit" disabled={!btnState} value="Submit">
+              <button type="submit" >
                 Reset
               </button>
             )}
@@ -173,7 +172,7 @@ export default function Bisection() {
               <Table
                 dataSource={newArr}
                 columns={header}
-                rowKey="iteration"
+                rowKey="iteration" //จัดลำดับแถวตามตัวแปรที่ตั้งไว้
                 pagination={false}
               />
             }

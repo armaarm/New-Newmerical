@@ -1,13 +1,13 @@
-const express = require("express");
+const express = require("express"); //ตัวสร้างserver for use in backend
 const app = express();
 const bodyparser = require("body-parser");
 app.use(bodyparser.json());
 const cors = require("cors");
-app.use(cors());
+app.use(cors()); //ติดต่อแต่ละportในเครื่องเดียวกัน
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUI = require('swagger-ui-express');
 
-const port = process.env.PORT || 5000;
+const port =  5000;
 
 const BisectionAPI = require("./api/BisectionAPI");
 const FalsePosAPI = require("./api/FalsePosAPI");
@@ -22,7 +22,7 @@ const LUDecomposeAPI = require("./api/LUDecomposeAPI");
 const GaussSeidelAPI = require("./api/GaussSeidelAPI");
 const JacobiAPI = require("./api/JacobiAPI");
 const NewtonInterpolationAPI = require("./api/NewtonInterpolation");
-app.use("/", BisectionAPI);
+app.use("/", BisectionAPI);//สร้างpathสำหรับserver
 app.use("/", FalsePosAPI);
 app.use("/", OnePointAPI);
 app.use("/", SecantAPI);
@@ -58,7 +58,7 @@ const swaggerOptions = {
 
 
 
-app.listen(port, () => console.log("Backend server live on " + port));
+app.listen(port, () => console.log("Backend server live on " + port)); //app ใช้พอร์ต5000
 
 
 module.exports = app;
