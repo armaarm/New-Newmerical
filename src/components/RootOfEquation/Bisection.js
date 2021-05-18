@@ -90,6 +90,7 @@ export default function Bisection() {
     })
       .then((res) => {
         console.log(res.data.tmpArr);
+        console.log(res);
         newArr = res.data.tmpArr;
         setBtnState(1);
         console.log(newArr);

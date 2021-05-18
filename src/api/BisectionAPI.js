@@ -35,7 +35,8 @@ const math = require("mathjs");
 
 
 router.post("/api/BisectionAPI", (req, res) => {
-  var eq = math.compile(req.body.equation); //math.compile = แปลงสมการที่รับเข้ามาเพื่อให้พร้อมสำหรับการคำนวณ
+  var eq = math.compile(req.body.equation);
+  console.log(eq); //math.compile = แปลงสมการที่รับเข้ามาเพื่อให้พร้อมสำหรับการคำนวณ
   var xl = parseFloat(req.body.xl);
   var xr = parseFloat(req.body.xr);
   var xm = 0;
