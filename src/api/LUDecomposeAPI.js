@@ -1,6 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const math = require("mathjs");
+/**
+ * @swagger
+ * tag:
+ */
 
 router.post("/api/LUDecomposeAPI", (req, res) => {
   var MatrixA = req.body.matrixA;
