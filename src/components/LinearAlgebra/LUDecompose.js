@@ -32,10 +32,6 @@ export default function LUDecompose() {
     setMatrixB(copy);
   };
 
-  const handleSubmit = (e) => {
-      e.preventDefault();
-      lu_decompose();
-  };
   const lu_decompose = () => {
     Axios.post("http://localhost:5000/api/LUDecomposeAPI", {
       matrixA: matrixA,
@@ -108,7 +104,7 @@ export default function LUDecompose() {
             </Row>
           </div>
           <p></p>
-          <button value="Submit" onClick={handleSubmit}>
+          <button value="Submit" onClick={lu_decompose}>
             Find the Solution
           </button>
 

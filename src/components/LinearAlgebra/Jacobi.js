@@ -41,10 +41,6 @@ export default function Jacobi() {
     setMatrixX(copy);
   };
 
-  const handleSubmit = (e) => {
-      e.preventDefault();
-      jacobi();
-  };
   const jacobi = () => {
     Axios.post("http://localhost:5000/api/JacobiAPI", {
       matrixA: matrixA,
@@ -137,7 +133,7 @@ export default function Jacobi() {
             </table>
           </div>
           <p></p>
-          <button value="Submit"  onClick={handleSubmit}>
+          <button value="Submit"  onClick={jacobi}>
             Find the Solution
           </button>
 

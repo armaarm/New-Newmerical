@@ -32,11 +32,7 @@ export default function Cholesky() {
     setMatrixB(copy);
   };
 
-  const handleSubmit = (e) => {
-      e.preventDefault();
-      cholesky();
-      console.log(output);
-  };
+  
   const cholesky = () => {
     Axios.post("http://localhost:5000/api/CholeskyAPI", {
       matrixA: matrixA,
@@ -109,7 +105,7 @@ export default function Cholesky() {
             </Row>
           </div>
           <p></p>
-          <button value="Submit" onClick={handleSubmit}>
+          <button value="Submit" onClick={cholesky}>
             Find the Solution
           </button>
 

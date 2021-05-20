@@ -32,10 +32,7 @@ export default function GaussJordan() {
     setMatrixB(copy);
   };
 
-  const handleSubmit = (e) => {
-      e.preventDefault();
-      gauss_jordan();
-  };
+  
   const gauss_jordan = () => {
     Axios.post("http://localhost:5000/api/GaussJordanAPI", {
       matrixA: matrixA,
@@ -108,7 +105,7 @@ export default function GaussJordan() {
             </Row>
           </div>
           <p></p>
-          <button value="Submit" onClick={handleSubmit}>
+          <button value="Submit" onClick={gauss_jordan}>
             Find the Solution
           </button>
 

@@ -41,11 +41,6 @@ export default function GaussSeidel() {
     setMatrixX(copy);
   };
 
-  const handleSubmit = (e) => {
-      e.preventDefault();
-      gauss_seidel();
-
-  };
   const gauss_seidel = () => {
     Axios.post("http://localhost:5000/api/GaussSeidelAPI", {
       matrixA: matrixA,
@@ -138,7 +133,7 @@ export default function GaussSeidel() {
             </table>
           </div>
           <p></p>
-          <button value="Submit" onClick={handleSubmit}>
+          <button value="Submit" onClick={gauss_seidel}>
             Find the Solution
           </button>
 
