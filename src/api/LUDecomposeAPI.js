@@ -3,7 +3,21 @@ const router = express.Router();
 const math = require("mathjs");
 /**
  * @swagger
- * tag:
+ *  tags:
+ *   name: LUDecompose
+ *   description: 
+ * 
+ */
+
+
+/**
+ * @swagger
+ * /api/LUDecomposeAPI:
+ *   get:
+ *     tags: [LUDecompose]
+ *     responses:
+ *       201:
+ *         description: GET
  */
 
 router.post("/api/LUDecomposeAPI", (req, res) => {
