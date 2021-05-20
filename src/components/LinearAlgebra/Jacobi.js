@@ -8,7 +8,6 @@ import Footer from "../Footer";
 
 export default function Jacobi() {
   const topic = "Jacobi Itertion Method";
-  const [btnState, setBtnState] = useState(false);
   const [output, setOutput] = useState([]);
   const [matrixA, setMatrixA] = useState(
     Array.from({ length: 3 }, () => Array.from({ length: 3 }, () => null))
@@ -43,10 +42,8 @@ export default function Jacobi() {
   };
 
   const handleSubmit = (e) => {
-    if (btnState === false) {
       e.preventDefault();
       jacobi();
-    }
   };
   const jacobi = () => {
     Axios.post("http://localhost:5000/api/JacobiAPI", {
@@ -55,7 +52,6 @@ export default function Jacobi() {
       matrixX: matrixX,
     })
       .then((res) => {
-        setBtnState(true);
         setOutput(res.data.out);
         console.log(res.data.out);
       })
@@ -87,7 +83,6 @@ export default function Jacobi() {
                           <td key={columnIndex}>
                             <input
                               type="number"
-                              disabled={btnState}
                               onChange={(e) =>
                                 initialA(rowIndex, columnIndex, e)
                               }
@@ -110,7 +105,6 @@ export default function Jacobi() {
                           <tr key={columnIndex}>
                             <input
                               type="number"
-                              disabled={btnState}
                               onChange={(e) =>
                                 initialB(rowIndex, columnIndex, e)
                               }
@@ -133,7 +127,6 @@ export default function Jacobi() {
                       <tr key={columnIndex}>
                         <input
                           type="number"
-                          disabled={btnState}
                           onChange={(e) => initialX(rowIndex, columnIndex, e)}
                         />
                       </tr>
@@ -144,7 +137,7 @@ export default function Jacobi() {
             </table>
           </div>
           <p></p>
-          <button value="Submit" disabled={btnState} onClick={handleSubmit}>
+          <button value="Submit"  onClick={handleSubmit}>
             Find the Solution
           </button>
 

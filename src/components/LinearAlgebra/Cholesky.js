@@ -8,7 +8,6 @@ import Footer from "../Footer";
 
 export default function Cholesky() {
   const topic = "Cholesky Method";
-  const [btnState, setBtnState] = useState(false);
   const [output, setOutput] = useState([]);
   const [matrixA, setMatrixA] = useState(
     Array.from({ length: 3 }, () => Array.from({ length: 3 }, () => null))
@@ -34,11 +33,9 @@ export default function Cholesky() {
   };
 
   const handleSubmit = (e) => {
-    if (btnState === false) {
       e.preventDefault();
       cholesky();
       console.log(output);
-    }
   };
   const cholesky = () => {
     Axios.post("http://localhost:5000/api/CholeskyAPI", {
@@ -46,7 +43,6 @@ export default function Cholesky() {
       matrixB: matrixB,
     })
       .then((res) => {
-        setBtnState(true);
         setOutput(res.data.out);
       })
       .catch((err) => {
@@ -77,7 +73,6 @@ export default function Cholesky() {
                           <td key={columnIndex}>
                             <input
                               type="number"
-                              disabled={btnState}
                               onChange={(e) =>
                                 initialA(rowIndex, columnIndex, e)
                               }
@@ -100,7 +95,6 @@ export default function Cholesky() {
                           <tr key={columnIndex}>
                             <input
                               type="number"
-                              disabled={btnState}
                               onChange={(e) =>
                                 initialB(rowIndex, columnIndex, e)
                               }
@@ -115,7 +109,7 @@ export default function Cholesky() {
             </Row>
           </div>
           <p></p>
-          <button value="Submit" disabled={btnState} onClick={handleSubmit}>
+          <button value="Submit" onClick={handleSubmit}>
             Find the Solution
           </button>
 
