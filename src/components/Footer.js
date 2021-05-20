@@ -25,12 +25,12 @@ const Footer = () => {
         <div style={phantomStyle}> 
         <div style={footerStyle}>
             <span>
-                Sarun Ngampojanavong{" "} 
+                Sarun Ngampojanavong
                 <a className="App-link"
                     href="http://cs.kmutnb.ac.th/" >
-                    CS @KMUTNB </a>{" "} 
+                    CS @KMUTNB </a>
                     </span > 
-                    </div>{" "} 
+                    </div> 
                     </div >
                     </div >
     );
