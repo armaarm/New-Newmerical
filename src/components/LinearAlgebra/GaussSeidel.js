@@ -6,6 +6,8 @@ import "../../App.css";
 import Topbar from "../Topbar";
 import Footer from "../Footer";
 
+
+
 export default function GaussSeidel() {
   const topic = "Gauss Seidel";
   const [output, setOutput] = useState([]);

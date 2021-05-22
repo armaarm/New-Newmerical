@@ -1,6 +1,39 @@
 const express = require("express");
 const router = express.Router();
 const math = require("mathjs");
+/** 
+ * @swagger
+ * tags:
+ *    name: GaussSeidel
+ *    description: GuassSeidel
+ */
+
+/**
+ * 
+ * @swagger
+ * /api/GaussSeidelAPI:
+ *  get:
+ *    tags: [GaussSeidel]
+ *    responses:
+ *      201:
+ *      description : GET
+ *      
+ */
+
+/** 
+ * @swagger
+ * /api/GaussSeidelAPI:
+ *    post:
+ *      parameters:
+ *        - name: MatrixA
+ *        - name: MatrixB
+ *        - name: MatrixX
+ *      tags: [GaussSeidel]
+ *      responses:
+ *        201:
+ *          description : post data
+ * 
+ */
 
 router.post("/api/GaussSeidelAPI", (req, res) => {
   var MatrixA = req.body.matrixA;

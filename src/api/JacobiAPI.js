@@ -2,6 +2,37 @@ const express = require("express");
 const router = express.Router();
 const math = require("mathjs");
 
+/**
+ * @swagger
+ * tags:
+ *    name: Jacobi
+ *    descriptions: Jacobi
+ */
+
+/**
+ * @swagger
+ * /api/JacobiAPI:
+ *  get:
+ *    tags: [Jacobi]
+ *    responses: 
+ *      201:
+ *        descriptions : GET
+ */
+
+/**
+ * @swagger
+ * /api/JacobiAPI:
+ *  post:
+ *    parsneters:
+ *      - name: MatrixA
+ *      - name: MatrixB
+ *      - name: MatrixX
+ *    tags: [Jacobi]
+ *    responses:
+ *      201:
+ *        descriptions: post data
+ */
+
 router.post("/api/JacobiAPI", (req, res) => {
   var MatrixA = req.body.matrixA;
   var MatrixB = [].concat(...req.body.matrixB);
