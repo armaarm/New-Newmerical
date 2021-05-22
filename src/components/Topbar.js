@@ -53,7 +53,8 @@ const Topbar = () => {
         <DropdownToggle color = "secondary"caret>Interpolation </DropdownToggle> 
         <DropdownMenu>
         <DropdownItem header > Select Topic </DropdownItem> 
-        <DropdownItem href = "/Newton-Divided-Difference" > NewtonInterpolationMenu</DropdownItem> 
+        <DropdownItem href = "/Newton-Divided-Difference" > NewtonInterpolation</DropdownItem>
+        <DropdownItem href = "/Spline" > Spline</DropdownItem> 
         </DropdownMenu> 
         </Dropdown>
         </Nav>

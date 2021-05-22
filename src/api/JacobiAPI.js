@@ -4,9 +4,9 @@ const math = require("mathjs");
 
 /**
  * @swagger
- * tags:
+ *  tags:
  *    name: Jacobi
- *    descriptions: Jacobi
+ *    description: Jacobi
  */
 
 /**
@@ -16,21 +16,21 @@ const math = require("mathjs");
  *    tags: [Jacobi]
  *    responses: 
  *      201:
- *        descriptions : GET
+ *        description: GET
  */
 
 /**
  * @swagger
  * /api/JacobiAPI:
  *  post:
- *    parsneters:
+ *    parameters:
  *      - name: MatrixA
  *      - name: MatrixB
  *      - name: MatrixX
  *    tags: [Jacobi]
  *    responses:
  *      201:
- *        descriptions: post data
+ *        description: post data
  */
 
 router.post("/api/JacobiAPI", (req, res) => {

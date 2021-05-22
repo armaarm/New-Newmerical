@@ -1,39 +1,71 @@
 const express = require("express");
 const router = express.Router();
 const math = require("mathjs");
-/** 
+
+/**
  * @swagger
- * tags:
- *    name: GaussSeidel
- *    description: GuassSeidel
+ *  tags:
+ *    name: GaussSeidels
+ *    description: GaussSeidel
  */
 
 /**
- * 
  * @swagger
  * /api/GaussSeidelAPI:
  *  get:
- *    tags: [GaussSeidel]
+ *    tags: [GaussSeidels]
  *    responses:
  *      201:
- *      description : GET
- *      
+ *        description: GET
  */
 
-/** 
+/**
  * @swagger
  * /api/GaussSeidelAPI:
- *    post:
- *      parameters:
- *        - name: MatrixA
- *        - name: MatrixB
- *        - name: MatrixX
- *      tags: [GaussSeidel]
- *      responses:
- *        201:
- *          description : post data
- * 
+ *  post:
+ *    parameters:
+ *       - name: MatrixA
+ *       - name: MatrixB
+ *       - name: MatrixX
+ *    tags: [GaussSeidels]
+ *    responses:
+ *      201:
+ *        description: post data
  */
+
+/**
+ * @swagger
+ *  tags:
+ *    name: Spline
+ *    description: Spline
+ *    
+ */
+
+/**
+ * @swagger
+ * /api/SplineAPI:
+ *   get:
+ *     tags: [Spline]
+ *     responses:
+ *       201:
+ *         description: Get
+ */
+
+/**
+ * @swagger
+ * /api/SplineAPI:
+ *  post:
+ *    parameters:
+ *      - name: Xarray
+ *      - name: Yarray
+ *      - name: findX
+ *    tags: [Spline]
+ *    responses: 
+ *      201:
+ *       description: post data
+ */
+
+
 
 router.post("/api/GaussSeidelAPI", (req, res) => {
   var MatrixA = req.body.matrixA;
@@ -41,43 +73,75 @@ router.post("/api/GaussSeidelAPI", (req, res) => {
   var MatrixX = [].concat(...req.body.matrixX);
   var solution = [];
   var n = MatrixA.length;
+  var temp = [];
+  var temp2;
+  var Check = -1;
 
-  x = new Array(n);
   var xold;
   epsilon = new Array(n);
+
+  for(var i = 0 ; i < n ; i++)
+  {
+    if(MatrixA[i][i] == 0)
+    {
+      check = 1;
+    }
+  }
+
+  if(check > -1)
+  {
+    for(var i = 0 ; i < n ; i++)
+    {
+      if(check < n-1)
+      {
+        temp[i] = MatrixA[check];
+        MatrixA[check] = MatrixA[check + 1];
+        MatrixA[check+1] = temp[i];
+        temp2 = MatrixB[check];
+        MatrixB[check+1] = MatrixB[check];
+        MatrixB[check] = temp2;
+      }
+      else 
+      {
+        temp[i] = MatrixA[check];
+        MatrixA[check] = MatrixA[check - 1];
+        MatrixA[check-1] = temp[i];
+        temp2 = MatrixB[check];
+        MatrixB[check-1] = MatrixB[check];
+        MatrixB[check] = temp2;
+      }
+    }
+  }
   do {
-    xold = JSON.parse(JSON.stringify(x));
+    xold = MatrixX;
     for (var i = 0; i < n; i++) {
       var sum = 0;
       for (var j = 0; j < n; j++) {
         if (i !== j) {
-          //else i == j That is a divide number
           sum = sum + MatrixA[i][j] * MatrixX[j];
         }
       }
-      x[i] = (MatrixB[i] - sum) / MatrixA[i][i]; //update x[i]
+      MatrixX[i] = (MatrixB[i] - sum) / MatrixA[i][i];
     }
-  } while (error(x, xold)); //if true , continue next iteration
+  } while (error(MatrixX, xold));
 
-  for (i = 0; i < x.length; i++) {
-    solution.push(x[i]);
+  for (i = 0; i < MatrixX.length; i++) {
+    solution.push(MatrixX[i]);
   }
 
   function error(xnew, xold) {
     for (var i = 0; i < xnew.length; i++) {
       epsilon[i] = Math.abs((xnew[i] - xold[i]) / xnew[i]);
     }
-    for (i = 0; i < epsilon.length; i++) {
-      if (epsilon[i] > 0.000001) {
+   
+      if (epsilon[0] > 0.000000001 && epsilon[1] > 0.000000001 && epsilon[2] > 0.000000001) {
         return true;
       }
-    }
     return false;
   }
 
   console.log(solution);
   console.log(math.multiply(MatrixA, solution));
-
   res.json({
     out: solution,
   });

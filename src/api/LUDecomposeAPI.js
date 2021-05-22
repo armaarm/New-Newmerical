@@ -5,7 +5,7 @@ const math = require("mathjs");
  * @swagger
  *  tags:
  *   name: LUDecompose
- *   description: 
+ *   description: LU
  * 
  */
 
@@ -18,6 +18,20 @@ const math = require("mathjs");
  *     responses:
  *       201:
  *         description: GET
+ */
+
+/**
+ * @swagger
+ * /api/LUDecomposeAPI:
+ *  post:
+ *    parameters:
+ *      - name: MatrixA
+ *      - name: MatrixB
+ *      - name: MatrixX 
+ *    tags: [LUDecompose]
+ *    responses: 
+ *       201:
+ *        description: post data
  */
 
 router.post("/api/LUDecomposeAPI", (req, res) => {

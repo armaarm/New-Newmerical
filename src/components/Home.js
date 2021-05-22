@@ -2,7 +2,7 @@ import React from "react";
 import Topbar from "./Topbar";
 import Footer from "./Footer";
 import "../App.css";
-import logo from "../logo.svg";
+import logo from "../unnamed.png";
 
 const Home = () => {
     document.body.style.overflow = "hidden";
@@ -21,7 +21,7 @@ const Home = () => {
         href = "https://reactjs.org"
         target = "_blank"
         rel = "noopener noreferrer" >
-        React JS</a> 
+        สนับสนุนโดย ซีอิ๊วขาวตราเด็กสมบูรณ์</a> 
         </header> 
         <Footer />
         </div>
