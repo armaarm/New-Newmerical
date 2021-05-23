@@ -33,40 +33,6 @@ const math = require("mathjs");
  *        description: post data
  */
 
-/**
- * @swagger
- *  tags:
- *    name: Spline
- *    description: Spline
- *    
- */
-
-/**
- * @swagger
- * /api/SplineAPI:
- *   get:
- *     tags: [Spline]
- *     responses:
- *       201:
- *         description: Get
- */
-
-/**
- * @swagger
- * /api/SplineAPI:
- *  post:
- *    parameters:
- *      - name: Xarray
- *      - name: Yarray
- *      - name: findX
- *    tags: [Spline]
- *    responses: 
- *      201:
- *       description: post data
- */
-
-
-
 router.post("/api/GaussSeidelAPI", (req, res) => {
   var MatrixA = req.body.matrixA;
   var MatrixB = [].concat(...req.body.matrixB);

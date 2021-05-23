@@ -6,12 +6,14 @@ import "../../App.css";
 import Topbar from "../Topbar";
 import Footer from "../Footer";
 
-export default function NewtonDivided() {
-  const topic = "Spline";
-  const [num, setNum] = useState();
+export default function Lagrange() {
+  const topic = "Lagrange";
+  const [num, setNum] = useState(0);
   const [xValue, setX] = useState([]);
   const [yValue, setY] = useState([]);
-  const [FindX, setFindX] = useState();
+  const [pointCount, setpointCount] = useState(0);
+  const [interpolatePoint, setinterpolatePoint] = useState([]);
+  const [FindX, setFindX] = useState(0);
   const [output, setOutput] = useState([]);
 
   useEffect(() => {
@@ -22,7 +24,10 @@ export default function NewtonDivided() {
     return [...Array(parseInt(num || 0)).keys()];
   };
 
- 
+  const generate_interpoint = () => {
+    return [...Array(parseInt(pointCount || 0)).keys()];
+  };
+
   const initialX = (i, event) => {
     let copy = [...xValue];
     copy[i] = +event.target.value;
@@ -35,17 +40,23 @@ export default function NewtonDivided() {
     setY(copy);
   };
 
+  const initialPoint = (i, event) => {
+    let copy = [...interpolatePoint];
+    copy[i] = +event.target.value - 1;
+    setinterpolatePoint(copy);
+  };
 
   const sendToAPI = (e) => {
     e.preventDefault();
-    Spline();
+    lagrange();
   };
-  const Spline = () => {
-    Axios.post("http://localhost:5000/api/SplineAPI", {
+  const lagrange = () => {
+    Axios.post("http://localhost:5000/api/LagrangeAPI", {
       xValue: xValue,
       yValue: yValue,
+      interpolatePoint: interpolatePoint,
       FindX: FindX,
-      // pointCount: pointCount,
+      pointCount: pointCount,
     })
       .then((res) => {
         setOutput(res.data.out);
@@ -114,6 +125,32 @@ export default function NewtonDivided() {
                     onChange={(e) => setFindX(e.target.value)}
                   />
                 </label>
+                <p></p>
+                <label>
+                  Enter Interpolate Points :<span>&nbsp;&nbsp;</span>
+                  <input
+                    type="text"
+                    value={pointCount}
+                    onChange={(e) => setpointCount(e.target.value)}
+                  />
+                </label>
+
+                {generate_interpoint().map((i) => (
+                  <div key={i} className="list-group list-group-flush">
+                    <div className="list-group-item">
+                      <div className="form-row">
+                        <div className="form-group col-4">
+                          <label>Interpolate Point {i + 1} =</label>
+                          <input
+                            type="number"
+                            onChange={(e) => initialPoint(i, e)}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+
                 <p></p>
                 <button type="submit" value="Submit">
                   Submit

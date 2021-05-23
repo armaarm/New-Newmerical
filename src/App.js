@@ -25,7 +25,7 @@ import GaussSeidel from './components/LinearAlgebra/GaussSeidel';
 import Jacobi from './components/LinearAlgebra/Jacobi';
 import NewtonDivided from './components/Interpolation/NewtonDivided';
 import Spline from './components/Interpolation/Spline';
-
+import Lagrange from './components/Interpolation/Lagrange';
 class App extends Component {
 
   render() {
@@ -46,6 +46,7 @@ class App extends Component {
           <Route exact path="/Jacobi" component={Jacobi} />
           <Route exact path="/Newton-Divided-Difference" component={NewtonDivided} />
           <Route exact path="/Spline" component={Spline} />
+          <Route exact path="/Lagrange" component={Lagrange} />
         </BrowserRouter>
         </div>
       </div>

@@ -20,7 +20,8 @@ const GaussJordanAPI = require("./api/GaussJordanAPI");
 const GaussSeidelAPI = require("./api/GaussSeidelAPI");
 const JacobiAPI = require("./api/JacobiAPI");
 const NewtonInterpolationAPI = require("./api/NewtonInterpolation");
-const NewtonInterpolationAPI = require("./api/SplineAPI");
+const SplineAPI = require("./api/SplineAPI");
+const LagrangeAPI = require("./api/LagrangeAPI");
 app.use("/", BisectionAPI);//สร้างpathสำหรับserver
 app.use("/", FalsePosAPI);
 app.use("/", OnePointAPI);
@@ -33,6 +34,7 @@ app.use("/", GaussSeidelAPI);
 app.use("/", JacobiAPI);
 app.use("/", NewtonInterpolationAPI);
 app.use("/", SplineAPI);
+app.use("/", LagrangeAPI);
 
 
 
